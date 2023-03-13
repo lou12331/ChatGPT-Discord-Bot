@@ -12,6 +12,8 @@ class MemoryInterface:
     def remove(self, user_id: str) -> None:
         pass
 
+    def rule(self, user_id: str, sys_message: str) -> None:
+        pass
 
 class Memory(MemoryInterface):
     def __init__(self, system_message):
@@ -34,3 +36,8 @@ class Memory(MemoryInterface):
 
     def remove(self, user_id: str) -> None:
         self.storage[user_id] = []
+
+    def rule(self, user_id: str, sys_message: str) -> None:
+        self.storage[user_id] = [{
+            'role': 'system', 'content': sys_message
+        }]

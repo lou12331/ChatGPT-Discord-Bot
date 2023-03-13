@@ -18,6 +18,8 @@ class ChatGPT:
     def clean_history(self, user_id: str) -> None:
         self.memory.remove(user_id)
 
+    def post_rule(self, user_id: set, text: str) -> None:
+        self.memory.rule(user_id, text)
 
 class DALLE:
     def __init__(self, model: ModelInterface):
